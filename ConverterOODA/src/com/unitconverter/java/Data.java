@@ -72,12 +72,12 @@ public class Data extends JFrame {
 		
 		JComboBox DataCombo1 = new JComboBox();
 		DataCombo1.setModel(new DefaultComboBoxModel(new String[] {"bit(b)", "byte(B)"}));
-		DataCombo1.setBounds(173, 32, 45, 21);
+		DataCombo1.setBounds(173, 32, 78, 21);
 		DataPane.add(DataCombo1);
 		
 		JComboBox DataCombo2 = new JComboBox();
 		DataCombo2.setModel(new DefaultComboBoxModel(new String[] {"bit(b)", "byte(B)"}));
-		DataCombo2.setBounds(173, 96, 45, 21);
+		DataCombo2.setBounds(173, 96, 78, 21);
 		DataPane.add(DataCombo2);
 		
 		JButton convertButton = new JButton("Convert");
