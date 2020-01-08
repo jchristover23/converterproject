@@ -64,6 +64,12 @@ public class Main {
 		MainWindow.getContentPane().add(TemperatureButton);
 		
 		JButton LengthButton = new JButton("Length");
+		LengthButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Length l = new Length();
+				l.LengthMain(null);
+			}
+		});
 		LengthButton.setBounds(143, 116, 141, 21);
 		MainWindow.getContentPane().add(LengthButton);
 		
