@@ -88,26 +88,21 @@ public class Data extends JFrame {
 				double result = Double.parseDouble(DataField1.getText());
 				
 				if (DataUnit1 == "bit(b)" && DataUnit2 == "byte(B)") {
-					result /= 8; 
-					DataField2.setText(String.valueOf(result));
-					String summary = (DataField1.getText() + " " + DataUnit1 + " -> " + DataField2.getText() + " " + DataUnit2);
-					history.DataHistory.add(summary);
-					System.out.println(summary);
-				}
-				
-					
-					else if (DataUnit1 == "byte(B)" && DataUnit2 == "bit(b)") {
-						result *= 8; 
-						DataField2.setText(String.valueOf(result));
-						String summary = (DataField1.getText() + " " + DataUnit1 + " -> " + DataField2.getText() + " " + DataUnit2);
-						history.DataHistory.add(summary);
-						
-					}
-					
-					else {
-						DataField2.setText("Unit cannot be the same!");
-					}
-				}
+		            result /= 8;
+		            DataField2.setText(String.valueOf(result));
+		            String summary = (DataField1.getText() + " " + DataUnit1 + " -> " + DataField2.getText() + " " + DataUnit2);
+		            history.DataHistory.add(summary);
+		            System.out.println(summary);
+		        } else if (DataUnit1 == "byte(B)" && DataUnit2 == "bit(b)") {
+		            result *= 8;
+		            DataField2.setText(String.valueOf(result));
+		            String summary = (DataField1.getText() + " " + DataUnit1 + " -> " + DataField2.getText() + " " + DataUnit2);
+		            history.DataHistory.add(summary);
+
+		        } else {
+		            DataField2.setText("Unit cannot be the same!");
+		        }
+			}
 				
 				
 		});
