@@ -74,6 +74,12 @@ public class Main {
 		MainWindow.getContentPane().add(LengthButton);
 		
 		JButton DataButton = new JButton("Data");
+		DataButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Data data = new Data();
+				data.DataMain(null);;
+			}
+		});
 		DataButton.setBounds(143, 147, 141, 21);
 		MainWindow.getContentPane().add(DataButton);
 		
