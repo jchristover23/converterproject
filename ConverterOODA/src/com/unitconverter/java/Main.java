@@ -50,7 +50,7 @@ public class Main {
 		
 		JLabel lblNewLabel = new JLabel("Choose Type");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		lblNewLabel.setBounds(10, 10, 236, 43);
+		lblNewLabel.setBounds(93, 12, 240, 43);
 		MainWindow.getContentPane().add(lblNewLabel);
 		
 		JButton TemperatureButton = new JButton("Temperature");
@@ -60,15 +60,15 @@ public class Main {
 				t.TemperatureMain(null);
 			}
 		});
-		TemperatureButton.setBounds(10, 63, 108, 21);
+		TemperatureButton.setBounds(143, 85, 141, 21);
 		MainWindow.getContentPane().add(TemperatureButton);
 		
 		JButton LengthButton = new JButton("Length");
-		LengthButton.setBounds(10, 94, 108, 21);
+		LengthButton.setBounds(143, 116, 141, 21);
 		MainWindow.getContentPane().add(LengthButton);
 		
 		JButton DataButton = new JButton("Data");
-		DataButton.setBounds(10, 125, 85, 21);
+		DataButton.setBounds(143, 147, 141, 21);
 		MainWindow.getContentPane().add(DataButton);
 		
 		JButton TimeButton = new JButton("Time");
@@ -76,7 +76,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		TimeButton.setBounds(10, 156, 85, 21);
+		TimeButton.setBounds(143, 178, 141, 21);
 		MainWindow.getContentPane().add(TimeButton);
 	}
 }
