@@ -86,6 +86,8 @@ public class Main {
 		JButton MeasurementButton = new JButton("Measurement");
 		MeasurementButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Measurement measurement = new Measurement();
+				measurement.MeasurementMain(null);
 			}
 		});
 		MeasurementButton.setBounds(143, 178, 141, 21);

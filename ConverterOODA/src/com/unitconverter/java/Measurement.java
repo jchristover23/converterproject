@@ -81,36 +81,35 @@ public class Measurement extends JFrame {
 		MeasurementPane.add(MeasurementCombo2);
 		
 		JButton convertButton = new JButton("Convert");
-		convertButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String MeasurementUnit1 = (String)MeasurementCombo1.getSelectedItem().toString();
-				String MeasurementUnit2 = (String)MeasurementCombo2.getSelectedItem().toString();
-				double result = Double.parseDouble(MeasurementField1.getText());
-				
-				if (MeasurementUnit1 == "bit(b)" && MeasurementUnit2 == "byte(B)") {
-					result /= 8; 
-					MeasurementField2.setText(String.valueOf(result));
-					String summary = (MeasurementField1.getText() + " " + MeasurementUnit1 + " -> " + MeasurementField2.getText() + " " + MeasurementUnit2);
-					history.MeasurementHistory.add(summary);
-					System.out.println(summary);
-				}
-				
-					
-					else if (MeasurementUnit1 == "byte(B)" && MeasurementUnit2 == "bit(b)") {
-						result *= 8; 
-						MeasurementField2.setText(String.valueOf(result));
-						String summary = (MeasurementField1.getText() + " " + MeasurementUnit1 + " -> " + MeasurementField2.getText() + " " + MeasurementUnit2);
-						history.MeasurementHistory.add(summary);
-						
-					}
-					
-					else {
-						MeasurementField2.setText("Unit cannot be the same!");
-					}
-				}
-				
-				
-		});
+	    convertButton.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e){
+	            String MeasurementUnit1 = (String) MeasurementCombo1.getSelectedItem().toString();
+	            String MeasurementUnit2 = (String) MeasurementCombo2.getSelectedItem().toString();
+	            double result = Double.parseDouble(MeasurementField1.getText());
+	            int res = (int) result;
+	            String resu;
+
+	            if (MeasurementUnit1 == MeasurementUnit2) {
+	                MeasurementField2.setText("Unit cannot be the same!");
+	            } else {
+	                if (MeasurementUnit1 == "Kilo") {
+	                    result *= 1000;
+	                } else if (MeasurementUnit1 == "Giga") {
+	                    result /= 1000;
+	                }
+
+	                if (MeasurementUnit2 == "Kilo") {
+	                    result /= 1000;
+	                } else if (MeasurementUnit2 == "Giga") {
+	                    result *= 1000;
+	                }
+
+	                MeasurementField2.setText(String.valueOf(result));
+	                String summary = (MeasurementField1.getText() + " " + MeasurementUnit1 + " -> " + MeasurementField2.getText() + " " + MeasurementUnit2);
+	                history.MeasurementHistory.add(summary);
+	            }
+	        }
+	    });
 		convertButton.setBounds(10, 136, 85, 21);
 		MeasurementPane.add(convertButton);
 		
