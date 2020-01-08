@@ -13,12 +13,18 @@ import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.JList;
 
 public class Temperature extends JFrame {
+
 
 	private JPanel tempPane;
 	private JTextField tempField1;
 	private JTextField tempField2;
+	
+	History history = new History();
 
 	/**
 	 * Launch the application.
@@ -40,6 +46,8 @@ public class Temperature extends JFrame {
 	 * Create the frame.
 	 */
 	public Temperature() {
+		
+		
 		setTitle("Temperature Converter");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -82,12 +90,20 @@ public class Temperature extends JFrame {
 				if (tempUnit1 == "C" && tempUnit2 == "F") {
 					double result = Double.parseDouble(tempField1.getText());
 					result = (result * 1.8) + 32; 
-					tempField2.setText(String.valueOf(result)); }
+					tempField2.setText(String.valueOf(result));
+					String summary = (tempField1.getText() + " " + tempUnit1 + " -> " + tempField2.getText() + " " + tempUnit2);
+					history.tempHistory.add(summary);
+					System.out.println(summary);
+				}
+				
 					
 					else if (tempUnit1 == "F" && tempUnit2 == "C") {
 						double result = Double.parseDouble(tempField1.getText());
 						result = (result - 32) / 1.8; 
 						tempField2.setText(String.valueOf(result));
+						String summary = (tempField1.getText() + " " + tempUnit1 + " -> " + tempField2.getText() + " " + tempUnit2);
+						history.tempHistory.add(summary);
+						
 					}
 					
 					else {
@@ -113,6 +129,13 @@ public class Temperature extends JFrame {
 		});
 		backButton.setBounds(341, 232, 85, 21);
 		tempPane.add(backButton);
+		
+		JList historyList = new JList(history.tempHistory.toArray());
+		historyList.setBounds(261, 33, 165, 189);
+		tempPane.add(historyList);
+		
+		JLabel lblNewLabel_1 = new JLabel("Converted Data History");
+		lblNewLabel_1.setBounds(261, 10, 165, 13);
+		tempPane.add(lblNewLabel_1);
 	}
-
 }
