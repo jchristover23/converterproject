@@ -83,12 +83,12 @@ public class Main {
 		DataButton.setBounds(143, 147, 141, 21);
 		MainWindow.getContentPane().add(DataButton);
 		
-		JButton TimeButton = new JButton("Time");
-		TimeButton.addActionListener(new ActionListener() {
+		JButton MeasurementButton = new JButton("Measurement");
+		MeasurementButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		TimeButton.setBounds(143, 178, 141, 21);
-		MainWindow.getContentPane().add(TimeButton);
+		MeasurementButton.setBounds(143, 178, 141, 21);
+		MainWindow.getContentPane().add(MeasurementButton);
 	}
 }
