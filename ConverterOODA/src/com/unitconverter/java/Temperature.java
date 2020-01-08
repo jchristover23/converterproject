@@ -41,7 +41,7 @@ public class Temperature extends JFrame {
 	 */
 	public Temperature() {
 		setTitle("Temperature Converter");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		tempPane = new JPanel();
 		tempPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -107,7 +107,8 @@ public class Temperature extends JFrame {
 		JButton backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//
+				setVisible(false);
+				dispose();
 			}
 		});
 		backButton.setBounds(341, 232, 85, 21);
