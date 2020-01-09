@@ -13,12 +13,17 @@ import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.JList;
 
 public class Length extends JFrame {
 
-	private JPanel lengthPane;
-	private JTextField lengthField1;
-	private JTextField lengthField2;
+
+	private JPanel LengthPane;
+	private JTextField LengthField1;
+	private JTextField LengthField2;
+	History history = new History();
 
 	/**
 	 * Launch the application.
@@ -40,93 +45,79 @@ public class Length extends JFrame {
 	 * Create the frame.
 	 */
 	public Length() {
+		
+		
 		setTitle("Length Converter");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		lengthPane = new JPanel();
-		lengthPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(lengthPane);
-		lengthPane.setLayout(null);
+		LengthPane = new JPanel();
+		LengthPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(LengthPane);
+		LengthPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Length Converter");
 		lblNewLabel.setBounds(10, 10, 135, 13);
-		lengthPane.add(lblNewLabel);
+		LengthPane.add(lblNewLabel);
 		
-		lengthField1 = new JTextField();
-		lengthField1.setBounds(10, 33, 153, 19);
-		lengthPane.add(lengthField1);
-		lengthField1.setColumns(10);
+		LengthField1 = new JTextField();
+		LengthField1.setBounds(10, 33, 153, 19);
+		LengthPane.add(LengthField1);
+		LengthField1.setColumns(10);
 		
-		lengthField2 = new JTextField();
-		lengthField2.setEditable(false);
-		lengthField2.setBounds(10, 97, 153, 19);
-		lengthPane.add(lengthField2);
-		lengthField2.setColumns(10);
+		LengthField2 = new JTextField();
+		LengthField2.setEditable(false);
+		LengthField2.setBounds(10, 97, 153, 19);
+		LengthPane.add(LengthField2);
+		LengthField2.setColumns(10);
 		
-		JComboBox lengthCombo1 = new JComboBox();
-		lengthCombo1.setModel(new DefaultComboBoxModel(new String[] {"km", "m", "cm"}));
-		lengthCombo1.setBounds(173, 32, 45, 21);
-		lengthPane.add(lengthCombo1);
+		JComboBox LengthCombo1 = new JComboBox();
+		LengthCombo1.setModel(new DefaultComboBoxModel(new String[] {"cm", "m", "km"}));
+		LengthCombo1.setBounds(173, 32, 78, 21);
+		LengthPane.add(LengthCombo1);
 		
-		JComboBox lengthCombo2 = new JComboBox();
-		lengthCombo2.setModel(new DefaultComboBoxModel(new String[] {"cm", "m", "km"}));
-		lengthCombo2.setBounds(173, 96, 45, 21);
-		lengthPane.add(lengthCombo2);
+		JComboBox LengthCombo2 = new JComboBox();
+		LengthCombo2.setModel(new DefaultComboBoxModel(new String[] {"cm", "m", "km"}));
+		LengthCombo2.setBounds(173, 96, 78, 21);
+		LengthPane.add(LengthCombo2);
 		
 		JButton convertButton = new JButton("Convert");
-		convertButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String lengthUnit1 = (String)lengthCombo1.getSelectedItem().toString();
-				String lengthUnit2 = (String)lengthCombo2.getSelectedItem().toString();
-				
-				if (lengthUnit1 == "km" && lengthUnit2 == "m") {
-					double result = Double.parseDouble(lengthField1.getText());
-					result = result * 1000; 
-					lengthField2.setText(String.valueOf(result)); }
-					
-					else if (lengthUnit1 == "km" && lengthUnit2 == "cm") {
-						double result = Double.parseDouble(lengthField1.getText());
-						result = result * 100000; 
-						lengthField2.setText(String.valueOf(result));
-					}
-				
-					else if (lengthUnit1 == "m" && lengthUnit2 == "km") {
-						double result = Double.parseDouble(lengthField1.getText());
-						result = result / 1000; 
-						lengthField2.setText(String.valueOf(result));
-					}
-				
-					else if (lengthUnit1 == "m" && lengthUnit2 == "cm") {
-						double result = Double.parseDouble(lengthField1.getText());
-						result = result * 100; 
-						lengthField2.setText(String.valueOf(result));
-					}
-				
-					else if (lengthUnit1 == "cm" && lengthUnit2 == "km") {
-						double result = Double.parseDouble(lengthField1.getText());
-						result = result / 100000; 
-						lengthField2.setText(String.valueOf(result));
-					}
-				
-					else if (lengthUnit1 == "cm" && lengthUnit2 == "m") {
-						double result = Double.parseDouble(lengthField1.getText());
-						result = result / 100; 
-						lengthField2.setText(String.valueOf(result));
-					}
-					
-					else {
-						lengthField2.setText("Unit cannot be the same!");
-					}
-				}
-				
-				
-		});
+	    convertButton.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e){
+	            String LengthUnit1 = (String) LengthCombo1.getSelectedItem().toString();
+	            String LengthUnit2 = (String) LengthCombo2.getSelectedItem().toString();
+	            double result = Double.parseDouble(LengthField1.getText());
+	            int res = (int) result;
+	            String resu;
+
+	            if (LengthUnit1 == LengthUnit2) {
+	                LengthField2.setText("Unit cannot be the same!");
+	            } else {
+	                if (LengthUnit1 == "cm") {
+	                    result /= 100;
+	                } else if (LengthUnit1 == "km") {
+	                    result *= 1000;
+	                }
+
+	                if (LengthUnit2 == "cm") {
+	                    result *= 100;
+	                } else if (LengthUnit2 == "km") {
+	                    result /= 1000;
+	                }
+
+	                LengthField2.setText(String.valueOf(result));
+	                String summary = (LengthField1.getText() + " " + LengthUnit1 + " -> " + LengthField2.getText() + " " + LengthUnit2);
+	                history.LengthHistory.add(summary);
+	                
+	                
+	            }
+	        }
+	    });
 		convertButton.setBounds(10, 136, 85, 21);
-		lengthPane.add(convertButton);
+		LengthPane.add(convertButton);
 		
 		JLabel resultLabel = new JLabel("Result");
 		resultLabel.setBounds(10, 74, 45, 13);
-		lengthPane.add(resultLabel);
+		LengthPane.add(resultLabel);
 		
 		JButton backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
@@ -136,7 +127,14 @@ public class Length extends JFrame {
 			}
 		});
 		backButton.setBounds(341, 232, 85, 21);
-		lengthPane.add(backButton);
+		LengthPane.add(backButton);
+		
+		JList historyList = new JList(history.LengthHistory.toArray());
+		historyList.setBounds(261, 33, 165, 189);
+		LengthPane.add(historyList);
+		
+		JLabel lblNewLabel_1 = new JLabel("Converted Length History");
+		lblNewLabel_1.setBounds(261, 10, 165, 13);
+		LengthPane.add(lblNewLabel_1);
 	}
-
 }
