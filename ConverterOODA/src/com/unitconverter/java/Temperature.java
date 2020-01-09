@@ -93,7 +93,6 @@ public class Temperature extends JFrame {
 					tempField2.setText(String.valueOf(result));
 					String summary = (tempField1.getText() + " " + tempUnit1 + " -> " + tempField2.getText() + " " + tempUnit2);
 					history.tempHistory.add(summary);
-					System.out.println(summary);
 				}
 				
 					
